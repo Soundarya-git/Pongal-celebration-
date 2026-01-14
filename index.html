@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pongal Celebration App</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff6d1;
+}
+
+/* Header */
+header {
+  background: #b33939;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  background: #e17055;
+  z-index: 10;
+  position: relative;
+}
+
+nav button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #e17055;
+  color: white;
+  font-size: 15px;
+}
+
+nav button:hover {
+  background: #d35400;
+}
+
+/* Sections */
+.section {
+  display: none;
+  padding: 15px;
+}
+
+.active {
+  display: block;
+}
+
+/* Home Background */
+#home {
+  background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("pongal-bg.png");
+  background-size: cover;
+  background-position: center;
+  min-height: calc(100vh - 130px);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-card {
+  background: rgba(255,255,255,0.15);
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  text-align: center;
+  animation: glowText 3s infinite alternate;
+}
+
+/* Floating celebration animation */
+.floating {
+  position: absolute;
+  bottom: -50px;
+  font-size: 26px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-110vh); opacity: 0; }
+}
+
+@keyframes glowText {
+  from { text-shadow: 0 0 8px #ffd32a; }
+  to { text-shadow: 0 0 18px #fffa65; }
+}
+
+/* Cards */
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+h2 {
+  color: #b33939;
+}
+
+/* Kolam */
+svg {
+  max-width: 100%;
+  animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 5px #ffd32a); }
+  to { filter: drop-shadow(0 0 12px #ff9f1a); }
+}
+
+/* Pot */
+#potIcon {
+  font-size: 90px;
+}
+
+.boil {
+  animation: boil 0.4s infinite alternate;
+}
+
+@keyframes boil {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+/* Buttons */
+.ingredients button, .option {
+  margin: 6px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #e17055;
+  color: white;
+  font-size: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>🌾 Pongal Celebration App 🌾</header>
+
+<nav>
+  <button onclick="showPage('home')">🏠 Home</button>
+  <button onclick="showPage('kolam')">🎨 Kolam</button>
+  <button onclick="showPage('pot')">🍚 Pongal Pot</button>
+  <button onclick="showPage('info')">📖 Info</button>
+  <button onclick="showPage('quiz')">🧠 Quiz</button>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="section active">
+  <div class="home-card">
+    <h2>🌾 பொங்கல் வாழ்த்துக்கள் 🌾</h2>
+    <p style="font-size:18px; line-height:1.6">
+      இனிய பொங்கல் திருநாள் வாழ்த்துக்கள்!<br>
+      மகிழ்ச்சி, வளம், ஆரோக்கியம் உங்கள் இல்லம் நிரம்பட்டும்.<br><br>
+      🌞🌾 Pongalo Pongal! 🌾🌞
+    </p>
+  </div>
+
+  <!-- Floating celebration icons -->
+  <span class="floating" style="left:10%;">🌾</span>
+  <span class="floating" style="left:30%; animation-delay:1s;">☀️</span>
+  <span class="floating" style="left:50%; animation-delay:2s;">🎉</span>
+  <span class="floating" style="left:70%; animation-delay:3s;">🥘</span>
+  <span class="floating" style="left:90%; animation-delay:4s;">🌾</span>
+</div>
+
+<!-- KOLAM -->
+<div id="kolam" class="section">
+  <div class="card">
+    <h2>🎨 Floral Kolam Coloring</h2>
+    <input type="color" id="kolamColor" value="#ff4757"><br><br>
+    <svg viewBox="0 0 300 300">
+      <circle cx="150" cy="150" r="100" fill="#f1f1f1" stroke="#555" stroke-width="4" onclick="fillKolam(evt)" />
+      <ellipse cx="150" cy="80" rx="30" ry="50" fill="#f1f1f1" stroke="#555" stroke-width="4" onclick="fillKolam(evt)" />
+      <ellipse cx="150" cy="220" rx="30" ry="50" fill="#f1f1f1" stroke="#555" stroke-width="4" onclick="fillKolam(evt)" />
+      <ellipse cx="80" cy="150" rx="50" ry="30" fill="#f1f1f1" stroke="#555" stroke-width="4" onclick="fillKolam(evt)" />
+      <ellipse cx="220" cy="150" rx="50" ry="30" fill="#f1f1f1" stroke="#555" stroke-width="4" onclick="fillKolam(evt)" />
+    </svg>
+  </div>
+</div>
+
+<!-- POT -->
+<div id="pot" class="section">
+  <div class="card">
+    <h2>🍚 Pongal Cooking</h2>
+    <div id="potIcon">🥘</div>
+    <p id="potStatus">Add ingredients</p>
+    <div class="ingredients">
+      <button onclick="addIngredient('Rice 🌾')">🌾 Rice</button>
+      <button onclick="addIngredient('Milk 🥛')">🥛 Milk</button>
+      <button onclick="addIngredient('Jaggery 🍯')">🍯 Jaggery</button>
+    </div>
+  </div>
+</div>
+
+<!-- INFO -->
+<div id="info" class="section">
+  <div class="card">
+    <h2>📖 About Pongal</h2>
+    <p id="pongalInfo"></p>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="section">
+  <div class="card">
+    <h2>🧠 Pongal Quiz</h2>
+    <p>Which crop is celebrated during Pongal?</p>
+    <button class="option" onclick="checkAnswer(false)">Wheat</button>
+    <button class="option" onclick="checkAnswer(true)">Rice</button>
+    <button class="option" onclick="checkAnswer(false)">Corn</button>
+    <p id="quizResult"></p>
+  </div>
+</div>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function fillKolam(evt) {
+  evt.target.setAttribute("fill", document.getElementById("kolamColor").value);
+}
+
+let count = 0;
+function addIngredient(item) {
+  const pot = document.getElementById("potIcon");
+  const status = document.getElementById("potStatus");
+  pot.classList.add("boil");
+  count++;
+  status.innerText = item + " added";
+  if (count >= 3) {
+    pot.classList.remove("boil");
+    pot.innerText = "🎉";
+    status.innerText = "Pongalo Pongal! 🎊";
+  }
+}
+
+function checkAnswer(correct) {
+  document.getElementById("quizResult").innerText =
+    correct ? "✅ Correct Answer!" : "❌ Try Again!";
+}
+
+const facts = [
+  "Pongal is celebrated during the Tamil month Thai.",
+  "It thanks the Sun God for a good harvest.",
+  "Pongal lasts for four days including Mattu Pongal.",
+  "Overflowing Pongal symbolizes prosperity."
+];
+document.getElementById("pongalInfo").innerText =
+  facts[Math.floor(Math.random() * facts.length)];
+</script>
+
+</body>
+</html>
